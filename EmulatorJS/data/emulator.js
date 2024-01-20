@@ -16,6 +16,7 @@ class EmulatorJS {
             const options = {
                 'a5200': 'atari5200',
                 'beetle_vb': 'vb',
+                'bluemsx': 'msx',
                 'desmume': 'nds',
                 'desmume2015': 'nds',
                 'fbalpha2012_cps1': 'arcade',
@@ -53,6 +54,7 @@ class EmulatorJS {
             return options[core] || core;
         }
         const options = {
+            'msx': 'bluemsx',
             'jaguar': 'virtualjaguar',
             'lynx': 'handy',
             'segaSaturn': 'yabause',

@@ -43,8 +43,8 @@
         await loadScript('socket.io.min.js');
         await loadStyle('emulator.css');
     //} else {
-        await loadScript('emulator.min.js');
-        await loadStyle('emulator.min.css');
+    //    await loadScript('emulator.min.js');
+    //    await loadStyle('emulator.min.css');
     //}
 
     const config = {};
