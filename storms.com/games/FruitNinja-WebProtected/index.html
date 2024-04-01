@@ -17,7 +17,7 @@
     <meta name="application-name" content="Fruit Ninja" />
     <meta name="apple-mobile-web-app-title" content="Fruit Ninja" />
     <meta name="msapplication-starturl" content="./" />
-    <script type="text/javascript" src="https://storms.com/lib/h5Sdk/v1/h5Sdk.js"></script>
+    <script type="text/javascript" src="../../lib/h5Sdk/v1/h5Sdk.js"></script>
 
     <title>Fruit Ninja</title>
     <style>
@@ -85,14 +85,15 @@
 
     <noscript>Please enable javascript to continue using this application.</noscript>
 
-    <script async
+    <!-- <script async
         data-ad-client="ca-pub-6934234812187351"
         data-ad-frequency-hint= "30s"
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
     </script>
     <script>window.adsbygoogle = window.adsbygoogle || [];
         const adBreak =  adConfig = function(o) {adsbygoogle.push(o);}
-    </script>
+    </script> -->
+    <script> var adBreak = adConfig = function(){} </script>
     <!-- installs the serviceWorker -->
     <!-- <script>
       if ('serviceWorker' in navigator) {
