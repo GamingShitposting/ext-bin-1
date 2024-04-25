@@ -115,6 +115,8 @@
       #ContextMenu a {
         text-decoration: none;
         color: lightgrey;
+        padding: 4px;
+        display: block;
       }
       #ContextMenu a:hover {
         text-decoration: nsone;
@@ -123,6 +125,7 @@
       #ContextMenu {
         background-color: rgb(40,40,40);
         padding: 5px;
+        font-size: large;
       }
     </style>
   </head>
@@ -139,6 +142,7 @@
     </div>
 
     <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" tabindex=-1></canvas>
+    <input type="text" id="VirtualInput" style="position: absolute; box-sizing: border-box; bottom: 0; left: 0; width: 100%; height: 2em;" hidden="true"/>
 
     <script>
       // Subtly hint at lack of WebAssembly support (if applicable)
@@ -167,15 +171,18 @@
       <a id="ContextButton">&#8801;</a><br />
       <div id="ContextMenu" style="display: none;">
         <input id="ID_SavegamesImport" type="file" onchange="onSavegamesImport(this)" accept="application/zip" style=display:none></input>
-        <a href="javascript:document.getElementById('ID_SavegamesImport').click();">Import saves</a><br />
-        <a href="javascript:onSavegamesExport();">Export saves</a><br />
-        <a href="javascript:FSDownload('/log.txt', 'text/plain');">Ren'Py log</a><br />
-        <a href="https://renpy.beuc.net/" target="_blank">
+        <a href="javascript:document.getElementById('ID_SavegamesImport').click();">📥️ Import saves</a>
+        <a href="javascript:onSavegamesExport();">📤️ Export saves</a>
+        <a href="javascript:ToggleVirtualInput();">⌨️ Virtual keyboard</a>
+        <!-- <a href="javascript:window.allowFrameResize=!window.allowFrameResize;">🪄️ Toggle force click render</a> -->
+        <a href="javascript:actionResizeFrame();">📽️ Force re-render</a>
+        <a href="javascript:FSDownload('/log.txt', 'text/plain');">📜️ Ren'Py log</a>
+        <!-- <a href="https://renpy.beuc.net/" target="_blank">
           <span style="font-size: smaller">
             <span style="color: dimgrey">Powered by</span>
             RenPyWeb
           </span>
-        </a>
+        </a> -->
         </span>
       </div>
     </div>
@@ -431,6 +438,46 @@
         Module["preRun"].push(create_persistent); // FS is not initialized yet, wait for it
       }
     </script>
+    <script>(function(){
+      var canvasEl = document.querySelector('canvas#canvas');
+      var virtualInput = document.querySelector('input#VirtualInput');
+      var inputReset = ' '.repeat(64);
+      window.ToggleVirtualInput = (function ToggleVirtualInput () {
+        virtualInput.hidden = !virtualInput.hidden;
+        if (!virtualInput.hidden) {
+          virtualInput.focus();
+        }
+      });
+      virtualInput.value = inputReset;
+      virtualInput.oninput = (function (event) {
+        event.target.value = inputReset;
+        var evNum, evKey, evCode, evType;
+        if (event.inputType.startsWith('deleteContent')) {
+          evNum = 8;
+          evKey = evCode = 'Backspace'; 
+          evType = 'keydown';
+        } else {
+          evNum = event.data.charCodeAt();
+          evName = event.data;
+          evCode = ('Key' + event.data);
+          evType = 'keypress';
+        }
+        canvasEl.dispatchEvent(new KeyboardEvent(evType, {
+          bubbles: true,
+          key: evKey, code: evCode,
+          charCode: evNum, keyCode: evNum, which: evNum,
+        }));
+      });
+      window.actionResizeFrame = (function actionResizeFrame () {
+        window.parent.postMessage({ actionResizeFrame: true }, '*');
+      });
+      /* window.allowFrameResize = true;
+      canvasEl.onclick = (function(){
+        if (window.allowFrameResize) {
+          actionResizeFrame();
+        }
+      }); */
+    })();</script>
     <script async type="text/javascript" src="index.js"></script>
   </body>
 </html>
