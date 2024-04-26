@@ -15,7 +15,7 @@
   </script>-->
 </head>
 
-<body style="text-align: center; margin: 0">
+<body style="text-align: center; margin: 0; overflow: hidden;">
 <div id="unity-container" style="visibility: hidden; position: absolute; width: 100%; height: 100%">
   <canvas id="unity-canvas" style="width: 100%; height: 100%"></canvas>
 </div>
@@ -160,7 +160,7 @@
 
     var buildType = "Dual";
     if(buildType === "Dual"){
-      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+      if /* (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) */ (false) {
         // By default Unity keeps WebGL canvas render target size matched with
         // the DOM size of the canvas element (scaled by window.devicePixelRatio)
         // Set this to false if you want to decouple this synchronization from
