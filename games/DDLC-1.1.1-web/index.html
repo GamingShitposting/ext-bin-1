@@ -115,8 +115,6 @@
       #ContextMenu a {
         text-decoration: none;
         color: lightgrey;
-        padding: 4px;
-        display: block;
       }
       #ContextMenu a:hover {
         text-decoration: nsone;
@@ -125,7 +123,6 @@
       #ContextMenu {
         background-color: rgb(40,40,40);
         padding: 5px;
-        font-size: large;
       }
     </style>
   </head>
@@ -142,7 +139,6 @@
     </div>
 
     <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" tabindex=-1></canvas>
-    <input type="text" id="VirtualInput" style="position: absolute; box-sizing: border-box; bottom: 0; left: 0; width: 100%; height: 2em;" hidden="true"/>
 
     <script>
       // Subtly hint at lack of WebAssembly support (if applicable)
@@ -171,18 +167,15 @@
       <a id="ContextButton">&#8801;</a><br />
       <div id="ContextMenu" style="display: none;">
         <input id="ID_SavegamesImport" type="file" onchange="onSavegamesImport(this)" accept="application/zip" style=display:none></input>
-        <a href="javascript:document.getElementById('ID_SavegamesImport').click();">📥️ Import saves</a>
-        <a href="javascript:onSavegamesExport();">📤️ Export saves</a>
-        <a href="javascript:ToggleVirtualInput();">⌨️ Virtual keyboard</a>
-        <!-- <a href="javascript:window.allowFrameResize=!window.allowFrameResize;">🪄️ Toggle force click render</a> -->
-        <a href="javascript:actionResizeFrame();">📽️ Force re-render</a>
-        <a href="javascript:FSDownload('/log.txt', 'text/plain');">📜️ Ren'Py log</a>
-        <!-- <a href="https://renpy.beuc.net/" target="_blank">
+        <a href="javascript:document.getElementById('ID_SavegamesImport').click();">Import saves</a><br />
+        <a href="javascript:onSavegamesExport();">Export saves</a><br />
+        <a href="javascript:FSDownload('/log.txt', 'text/plain');">Ren'Py log</a><br />
+        <a href="https://www.renpy.org/" target="_blank">
           <span style="font-size: smaller">
             <span style="color: dimgrey">Powered by</span>
-            RenPyWeb
+            Ren'Py
           </span>
-        </a> -->
+        </a>
         </span>
       </div>
     </div>
@@ -191,13 +184,20 @@
       /* Copyright (C) 2018, 2019, 2020, 2021  Sylvain Beucler */
 
       /* Context menu */
+      const menu = document.getElementById('ContextMenu');
       document.getElementById('ContextButton').addEventListener('click', function (e) {
-        var menu = document.getElementById('ContextMenu');
         if (menu.style.display == 'none')
           menu.style.display = 'block';
         else
           menu.style.display = 'none';
         e.preventDefault();
+      });
+
+      menu.addEventListener('click', function (e) {
+        if (e.target.tagName == 'A') {
+          // Close context menu when a menu item is selected
+          menu.style.display = 'none';
+        }
       });
 
       function onSavegamesImport(input) {
@@ -210,7 +210,12 @@
               console.trace(); console.log(err, err.message);
               Module.print("Warning: cannot import savegames: write error: " + err.message + "\n");
             } else {
-              Module.print("Saves imported - restart game to apply.\n");
+                renpy_exec('renpy.loadsave.location.scan()').then(result => {
+                  Module.print("Saves imported successfully\n");
+                }).catch(error => {
+                  console.error('Cannot rescan saves folder', error);
+                  Module.print("Saves imported - restart game to apply.\n");
+                });
             }
           });
         }
@@ -396,12 +401,10 @@
         //Module.setStatus('Exception thrown, see JavaScript console');
         // Explicitly display meaningful errors such as "uncaught exception: out of memory":
 
-        var iOSSafari = /iP(ad|od|hone)/i.test(window.navigator.userAgent) && /WebKit/i.test(window.navigator.userAgent) && !(/(CriOS|FxiOS|OPiOS|mercury)/i.test(window.navigator.userAgent));
+        var appleWarning = "";
 
-        if (iOSSafari) {
-            var appleWarning = "\n<p>\nMobile Safari has known compatibility issues. Please contact Apple if this game does not load properly.";
-        } else {
-            var appleWarning = "";
+        if (/RangeError/.test(event)) {
+            appleWarning = "\n<p>This is a known issue with this beta and recent changes to some web browsers. Reloading this page with developer tools open may help.";
         }
 
         Module.setStatus('Error: ' + event.split('\n')[0] + ' (see JavaScript console for details)' + appleWarning);
@@ -413,6 +416,150 @@
     </script>
     <script type='text/javascript' src="pythonhome-data.js"></script>
     <script type='text/javascript' src="pyapp-data.js"></script>
+
+    <script type='text/javascript'>
+        /* This block contains code for running Python statements
+        * in Ren'Py process from JS.
+        *
+        * Copyright 2022 Teyut <teyut@free.fr>, MIT License.
+        */
+
+        (function() {
+          let cmd_queue = [];
+          let cur_cmd = undefined;
+          let debug = false;
+
+          function dbg_log(...args) {
+            if(debug) console.debug(...args);
+          }
+
+          /** This functions is called by the wrapper script at the end of script execution. */
+          function cmd_callback(result) {
+            dbg_log('cmd_callback', result);
+
+            if(cur_cmd === undefined) {
+              console.error('Unexpected command result', result);
+              return;
+            }
+
+            try {
+              if(result.error !== undefined) {
+                dbg_log('ERROR', result.name, result.error, result.traceback);
+                const e = new Error(result.error);
+                e.name = result.name;
+                e.traceback = result.traceback;
+                cur_cmd.reject(e);
+              } else {
+                dbg_log('SUCCESS', result.data);
+                cur_cmd.resolve(result.data);
+              }
+            } finally {
+              cur_cmd = undefined;
+              send_next_cmd();
+            }
+          }
+
+          /** Prepare and send the next command to be executed if any. */
+          function send_next_cmd() {
+            if(cmd_queue.length == 0) return
+
+            cur_cmd = cmd_queue.shift();
+            dbg_log('send_next_cmd', cur_cmd);
+
+            // Convert script to base64 to prevent having to escape
+            // the script content as a Python string
+            const script_b64 = btoa(cur_cmd.py_script);
+            const wrapper = 'import base64, emscripten, json, traceback;\n'
+                + 'try:'
+                + "result = None;"
+                + "exec(base64.b64decode('" + script_b64 + "').decode('utf-8'));"
+                + "result = json.dumps(dict(data=result));"
+                + "\n"
+                + "except Exception as e:"
+                + "result = json.dumps(dict(error=str(e), name=e.__class__.__name__, traceback=traceback.format_exc()));"
+                + "\n"
+                + "emscripten.run_script('_renpy_cmd_callback(%s)' % (result,));";
+
+            dbg_log(wrapper);
+
+            // Write script to the global variable Ren'Py is monitoring
+            window._renpy_cmd = wrapper;
+          }
+
+          /** Add a command to the queue and execute it if the queue was empty. */
+          function add_cmd(py_script, resolve, reject) {
+            const cmd = {py_script: py_script, resolve: resolve, reject: reject};
+            dbg_log('add_cmd', cmd);
+            cmd_queue.push(cmd);
+
+            if(cur_cmd === undefined) send_next_cmd();
+          }
+
+          /* Global definitions */
+
+          /** Execute Python statements in Ren'Py Python's thread. The statements are executed
+           * using the renpy.python.py_exec() function, and the value of the "result" variable
+           * is passed to the resolve callback. In case of error, an Error instance is passed
+           * to the reject callback, with an extra "traceback" property.
+           * @param py_script The Python script to execute.
+           * @return A promise which resolves with the statements result.
+           */
+          renpy_exec = function(py_script) {
+            return new Promise((resolve, reject) => {
+              add_cmd(py_script, resolve, reject);
+            });
+          };
+
+          /** Helper function to get the value of a Ren'Py variable.
+           * @param name The variable name (e.g., "build.name").
+           * @return A promise which resolves with the variable value.
+           */
+          renpy_get = function(name) {
+            return new Promise((resolve, reject) => {
+              renpy_exec('result = ' + name)
+                  .then(resolve).catch(reject);
+            });
+          };
+
+          /** Helper function to set the value of a Ren'Py variable.
+           * @param name The variable name (e.g., "build.name").
+           * @param value The value to set. It should either be a basic JS type that
+           *              will be converted to JSON, or a Python expression. The raw
+           *              parameter must be set to true for the latter case.
+           * @param raw (optional) If true, value is a valid Python expression.
+           *            Otherwise, it must be a basic JS type.
+           * @return A promise which resolves with true in case of success
+           *         and fails otherwise.
+           */
+          renpy_set = function(name, value, raw) {
+            let script;
+            if(raw) {
+              script = name + " = " + value + "; result = True";
+            } else {
+              // Using base64 as it is unclear if we can use the output
+              // of JSON.stringify() directly as a Python string
+              script = 'import base64, json; '
+                  + name + " = json.loads(base64.b64decode('"
+                  + btoa(JSON.stringify(value))
+                  + "').decode('utf-8')); result = True";
+            }
+            return new Promise((resolve, reject) => {
+              renpy_exec(script)
+                  .then(resolve).catch(reject);
+            });
+          };
+
+          _renpy_cmd_callback = cmd_callback;
+
+          /** Stubs for web3 functionality. */
+          window.loadCache = () => { };
+          window.clearCache = () => { };
+          window.webglContextLost = false;
+          window.webglContextRestored = false;
+
+        })();
+    </script>
+
     <script type='text/javascript'>
       function create_persistent() {
         // populate savegames
@@ -437,47 +584,137 @@
         if (!Module['preRun']) Module['preRun'] = [];
         Module["preRun"].push(create_persistent); // FS is not initialized yet, wait for it
       }
-    </script>
-    <script>(function(){
-      var canvasEl = document.querySelector('canvas#canvas');
-      var virtualInput = document.querySelector('input#VirtualInput');
-      var inputReset = ' '.repeat(64);
-      window.ToggleVirtualInput = (function ToggleVirtualInput () {
-        virtualInput.hidden = !virtualInput.hidden;
-        if (!virtualInput.hidden) {
-          virtualInput.focus();
-        }
-      });
-      virtualInput.value = inputReset;
-      virtualInput.oninput = (function (event) {
-        event.target.value = inputReset;
-        var evNum, evKey, evCode, evType;
-        if (event.inputType.startsWith('deleteContent')) {
-          evNum = 8;
-          evKey = evCode = 'Backspace'; 
-          evType = 'keydown';
+
+    /***************************************************************************
+     * Fetch.
+     ***************************************************************************/
+
+    let fetchId = 1;
+    let fetchResult = { };
+
+    /**
+     * Fetch a file from the server.
+     *
+     * @param method The HTTP method to use.
+     * @param url The URL to fetch.
+     * @param inFile The file to send to the server. A string giving the file name, or null for no file.
+     * @param outFile The file to write the response to. A string giving the file name, or null for no file.
+     * @param inContentType The content type of the file to send to the server. A string giving the content type. Ignored if inFile is null.
+     * @param headers A string containing a JSON object that contains the headers to send to the server.
+     *
+     * @return A string giving the result of the fetch. The first word is the status, which is one of "OK", "ERROR", or "PENDING", followed by the HTTP status code and status text.
+     */
+     function fetchFile(method, url, inFile, outFile, inContentType, headers) {
+
+        let id = fetchId++;
+        fetchResult[id] = "PENDING Fetch in progress.";
+
+        // Ensure headers exists and is not a copy.
+        if (headers) {
+            headers = JSON.parse(headers)
         } else {
-          evNum = event.data.charCodeAt();
-          evName = event.data;
-          evCode = ('Key' + event.data);
-          evType = 'keypress';
+            headers = { };
         }
-        canvasEl.dispatchEvent(new KeyboardEvent(evType, {
-          bubbles: true,
-          key: evKey, code: evCode,
-          charCode: evNum, keyCode: evNum, which: evNum,
-        }));
-      });
-      window.actionResizeFrame = (function actionResizeFrame () {
-        window.parent.postMessage({ actionResizeFrame: true }, '*');
-      });
-      /* window.allowFrameResize = true;
-      canvasEl.onclick = (function(){
-        if (window.allowFrameResize) {
-          actionResizeFrame();
+
+        headers = { ...headers };
+
+        async function fetchFileWork() {
+            try {
+
+                let content = ''
+
+                if (inFile) {
+                    headers["Content-Type"] = inContentType || 'application/octet-stream';
+                }
+
+                let options = { method: method, headers: headers};
+
+                if (inFile) {
+                    options.body = FS.readFile(inFile, { encoding: 'binary' });
+                }
+
+                let response = await fetch(url, options);
+
+                if (response.ok) {
+                    if (outFile) {
+                        let ab = await response.arrayBuffer();
+                        FS.writeFile(outFile, new Uint8Array(ab));
+                    }
+
+                    fetchResult[id] = "OK " + response.status + " " + response.statusText;
+                } else{
+                    fetchResult[id] = "ERROR " + response.status + " " + response.statusText;
+                }
+
+            } catch (err) {
+                fetchResult[id] = "ERROR " + err;
+                console.error(err);
+            }
+
         }
-      }); */
-    })();</script>
+
+        fetchFileWork();
+
+        return id;
+    }
+
+    function fetchFileResult(id) {
+        let result = fetchResult[id];
+
+        if (! result.startsWith("PENDING")) {
+            delete fetchResult[id];
+        }
+
+        return result || "ERROR Fetch ID not found.";
+    }
+
+    window.fetchFile = fetchFile;
+    window.fetchFileResult = fetchFileResult;
+
+    /**
+     * Fullscreen support.
+     */
+
+    let lastFullscreenTime = 0;
+
+    function isFullscreen() {
+        let now = +new Date();
+        return document.fullscreenElement ? 1 : 0;
+    }
+
+    window.isFullscreen = isFullscreen;
+
+    function setFullscreen(enable) {
+
+        let current = document.fullscreenElement !== null;
+
+        if (enable == current) {
+            return;
+        }
+
+        let now = +new Date();
+
+        if (lastFullscreenTime + 250 > +new Date()) {
+            return;
+        }
+
+        lastFullscreenTime = now;
+
+        setTimeout(function () {
+            if (enable) {
+                let e = document.getElementsByTagName("html")[0];
+                e.requestFullscreen().catch(function (error) {
+                    lastFullscreenTime = now + 15000;
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        }, 0);
+    }
+
+    window.setFullscreen = setFullscreen;
+
+    </script>
     <script async type="text/javascript" src="index.js"></script>
   </body>
 </html>
