@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+        <title>Among Us Online</title>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Play Among Us Online for FREE. No trash games like other websites. Enjoy the best online games on Desktop, Tablet or Mobile. Play on amongus-online.net">
+    <meta name="keywords" content="Among Us Online , play games, html5 games , online games , free online games , best games , car games , free games, top games">
+
+    <!-- META FOR FACEBOOK -->
+    <meta property="fb:app_id" content="123144111618023" />
+	<meta property="og:site_name" content="amongus-online.net"/>
+	<meta property="og:type" content="website"/>
+	<meta property="og:url" content="https://amongus-online.net/game/amongus"/>
+	<meta property="og:image" content="https://amongus-online.net/Resources/amongus.jpg"/>
+	<meta property="og:image:width" content="512"/>
+	<meta property="og:image:height" content="384"/>
+	<meta property="og:title" content="Play Among Us Online Online & FREE"/>
+	<meta property="og:description" content="Play Among Us Online for FREE on browser. A lot of quality top free games here. PLAY NOW"/>
+	<!-- END META FOR FACEBOOK -->
+
+	<link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
+	<link rel="manifest" href="../favicon/site.webmanifest">
+	<link rel="mask-icon" href="../favicon/safari-pinned-tab.svg" color="#5bbad5">
+	<link rel="shortcut icon" href="../favicon/favicon.ico">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="msapplication-config" content="../favicon/browserconfig.xml">
+	<meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="../css/main-c.css">
+    <link rel="stylesheet" href="../css/main-g.css">
+    <link rel="canonical" href="https://amongus-online.net/game/amongus"/>
+
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../native_games/amongus/TemplateData/style.css">
+    <script src="../js/UnityProgress.js"></script>
+    <script src="../js/UnityLoader.js"></script>
+
+	<script>
+        /* var unityInstance = UnityLoader.instantiate("unityContainer", "https://amongus-online.net/native_games/amongus/Build/Game.json", {onProgress: UnityProgress}); */
+        var unityInstance = UnityLoader.instantiate("unityContainer", "../native_games/amongus/Build/Game.json", {onProgress: UnityProgress});
+    </script>
+    	
+    <style>
+		html, body {
+			margin:0;
+			padding:0;
+		}
+
+		ul {
+			list-style-type: none;
+			margin: 0px auto;
+			padding: 0;
+			overflow: hidden;
+			background-color: #333;
+			width: 800px;
+			text-align:center;
+		}
+
+		li {
+			float: left;
+		}
+
+		li a {
+			display: block;
+			color: white;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+			font-family: 'Lato', sans-serif;
+		}
+
+		li a:hover:not(.active) {
+			background-color: #111;
+		}
+
+		.active {
+			background-color: #4CAF50;
+		}
+	</style>
+
+    <style>
+        h1 {
+			display:none;
+			text-align: center;
+		}
+
+		.main-content {
+			margin: 0px auto;
+			text-align: center;
+			margin-top: 50px;
+		}
+
+        .webgl-content { width: 960px; height: 600px; }
+		
+
+        @media  screen and (max-width: 960px) {
+			.webgl-content {
+				height: 100vh;
+			}
+
+			#mainGames {
+				display: none;
+			}
+		}
+
+		.invisible {
+			display: none;
+		}
+		
+		.col-lg-4 a {
+            overflow: hidden;
+        }
+    </style>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+	<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-747YJ74QHW"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'G-747YJ74QHW');
+	</script>
+
+    <script data-ad-client="ca-pub-8940114107129588" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <script src="https://upskittyan.com/pfe/current/tag.min.js?z=3932353" data-cfasync="false" async></script>
+    
+    <script type="text/javascript" data-cfasync="false">
+    /*<![CDATA[/* */
+    (function(){var dff6745cb72832d52f8744f0f4be65f4="EeAJ4Q___pTXkhgjGsLfqTZuE2hDL4w-U1Um8i4hOcgZXlMhmgbDJJMmMXriyjPvozwR2qxqCnfcCwD4xl8dOaPK";var b=['w7Mqwpw=','w7tjw5bCoMKKw4MGD8KCw6w2w7JS','S8KGwpJyYn7DgMOkUA==','QMOrw4/DpMOFR14=','DH4Mw7TDki4zwrhuworCjAk=','w5nCs8KoGivCsg==','wrddwqPDuSXCpsKPw4Q=','UMOhw5nDqMOfWF7DjXNSeMOa','woxCwq/DvA==','GcKjworDm054dCZ8LcK5wrjDu8K7wrE=','K8OtwqvDqi4=','fsOwEl9kw6s=','PsOnwqLDoQ==','woUcP8Kpw5nCsQrCsULCncOGwrnCl1zDncO/w7XCg8KZNCxHK0fChMOIwozCt2JVKRXDtTrChcKBwo0xRlDCs8OTwrzDpw==','wq0ZDkYbw5DCkwzCpwI=','w5RJw4PDpMOBw5HCsgl6B0xww4ou','w5dnwqUBw4vDocKhwpzDosKQw7TDmw==','wr4SwoxPQsORQ8O1','AH/CjcKwwrLDgg==','DsK0wp3DnBJdZzl6N8K0','QcO2DsO6wpzDvMOVYk8hKMKOw7Q=','HsKvwobDiih2','fsOwK8KKfsK2w7A=','GBzDqsK8w6M5NgXCsUBqwr/CjMOawofDtsOaHnhl','wp05KVVhwrnCkcKQwppRw7rCtTksXcKEPgjCpzQsNcKHwoDDgh8yw6AiwopZwqZFHsOFfsKPMxTDlcOZIMOd','wrtGwrTDvDvDucOOwp8='];(function(a,c){var f=function(g){while(--g){a['push'](a['shift']());}};f(++c);}(b,0x12c));var c=function(a,d){a=a-0x0;var e=b[a];if(c['dcBpjQ']===undefined){(function(){var h=function(){var k;try{k=Function('return\x20(function()\x20'+'{}.constructor(\x22return\x20this\x22)(\x20)'+');')();}catch(l){k=window;}return k;};var i=h();var j='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';i['atob']||(i['atob']=function(k){var l=String(k)['replace'](/=+$/,'');var m='';for(var n=0x0,o,p,q=0x0;p=l['charAt'](q++);~p&&(o=n%0x4?o*0x40+p:p,n++%0x4)?m+=String['fromCharCode'](0xff&o>>(-0x2*n&0x6)):0x0){p=j['indexOf'](p);}return m;});}());var g=function(h,l){var m=[],n=0x0,o,p='',q='';h=atob(h);for(var t=0x0,u=h['length'];t<u;t++){q+='%'+('00'+h['charCodeAt'](t)['toString'](0x10))['slice'](-0x2);}h=decodeURIComponent(q);var r;for(r=0x0;r<0x100;r++){m[r]=r;}for(r=0x0;r<0x100;r++){n=(n+m[r]+l['charCodeAt'](r%l['length']))%0x100;o=m[r];m[r]=m[n];m[n]=o;}r=0x0;n=0x0;for(var v=0x0;v<h['length'];v++){r=(r+0x1)%0x100;n=(n+m[r])%0x100;o=m[r];m[r]=m[n];m[n]=o;p+=String['fromCharCode'](h['charCodeAt'](v)^m[(m[r]+m[n])%0x100]);}return p;};c['UuUJWr']=g;c['ddWRbA']={};c['dcBpjQ']=!![];}var f=c['ddWRbA'][a];if(f===undefined){if(c['NTXVzs']===undefined){c['NTXVzs']=!![];}e=c['UuUJWr'](e,d);c['ddWRbA'][a]=e;}else{e=f;}return e;};var k=window;k[c('0x14','M6mc')]=[[c('0x7','T@p2'),0x450ee1],[c('0x4','Sla#'),0.0015],[c('0x1','8P1a'),'0'],[c('0x10','26dQ'),0x0],[c('0xf','dK@s'),![]],[c('0xd','ycfA'),0x0],[c('0x13','dK@s'),!0x0]];var j=[c('0x19','n*f1'),c('0xa','lUkE')],q=0x0,a,p=function(){if(!j[q])return;a=k[c('0x12','M6mc')][c('0x6','8rq^')](c('0x17','R&UZ'));a[c('0x18','elA3')]=c('0x15','T@p2');a[c('0x16','elA3')]=!0x0;var d=k[c('0x3','NqRM')][c('0x9','Oeos')](c('0x11','ZKq!'))[0x0];a[c('0xc','Bb@a')]=c('0xb','M6mc')+j[q];a[c('0x5','T@p2')]=c('0xe','ey3P');a[c('0x8','w4cA')]=function(){q++;p();};d[c('0x0','fb[n')][c('0x2','3v1l')](a,d);};p();})();
+    /*]]>/* */
+    </script>
+
+    <script type="text/javascript">
+    window._taboola = window._taboola || [];
+    _taboola.push({category:'auto'});
+    !function (e, f, u, i) {
+        if (!document.getElementById(i)){
+        e.async = 1;
+        e.src = u;
+        e.id = i;
+        f.parentNode.insertBefore(e, f);
+        }
+    }(document.createElement('script'),
+    document.getElementsByTagName('script')[0],
+    '//cdn.taboola.com/libtrc/amongusonline/loader.js',
+    'tb_loader_script');
+    if(window.performance && typeof window.performance.mark == 'function')
+        {window.performance.mark('tbl_ic');}
+    </script> -->
+
+    <script>
+    (function(zonefile) { 
+    var y = "cpmstarx";
+    var drutObj = window[y] = window[y] || {};
+    function failCpmstarAPI() { var failFn = function(o) { o && typeof(o) === "object" && o.fail && o.fail(); }; drutObj && Array.isArray(drutObj.cmd) && drutObj.cmd.forEach(failFn) && (drutObj.cmd.length = 0);  window.cpmstarAPI = window["_"+zonefile] = failFn; }
+    /* var rnd = Math.round(Math.random()*999999);
+    var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.onerror=failCpmstarAPI;
+    var proto = document.location.protocol;
+    var host = ( proto == "https:" || proto == "file:")?"https://server":"//cdn";
+    if(window.location.hash=="#cpmstarDev") host = "//dev.server";
+    if(window.location.hash=="#cpmstarStaging") host = "//staging.server"; 
+    s.src = host + ".cpmstar.com/cached/zonefiles/" + zonefile + ".js?rnd="+rnd; 
+    var s2=document.getElementsByTagName('script')[0];
+    s2.parentNode.insertBefore(s, s2); */
+    window.cpmstarAPI = function(o) { (drutObj.cmd = drutObj.cmd || []).push(o); }
+    }('689_52028_gameapi'));
+    </script>
+
+    <!-- <script src="https://amongus-online.net/js/prebid-ads.js"></script> -->
+    
+    
+  </head>
+  <body>
+
+    
+        <h1>Among Us Online</h1>
+    <div style="display: flex;">
+	<div class="main-content">
+        <!-- 300x600 Placement Tag -->
+		    <!-- <script async src="https://ssl.cdne.cpmstar.com/cached/js/lib.js"></script>
+
+		    <div id="cpm_left" class="div-85119" style="width:160px; height:600px"></div>
+		    <script>
+		    (function(w,pid){
+		    var y = "cpmstarx", els = w.document.getElementsByClassName("div-"+pid), pindex = els.length-1, el = els[pindex];
+		    w[y]=w[y]||{};(w[y].libcmd=w[y].libcmd||[]).push({kind:'asynctagfetch',el:el,pid:pid,pindex:pindex});
+		    })(window,85119);
+		    </script>		-->
+					<div class="webgl-content" id="unityContainer">
+			</div>
+			
+        
+        			<!-- <div id="cpm_right" style="width:160px; height:600px">
+		<div id="taboola-right-rail-thumbnails"></div>
+        <script type="text/javascript">
+            function showTaboolaAd()
+            {
+                var child = document.getElementById('taboola-right-rail-thumbnails').firstChild?.firstChild;
+                if (child != null) child.innerHTML = '';
+                
+                window._taboola = window._taboola || [];
+                _taboola.push({
+                    mode: 'thumbnails-rr',
+                    container: 'taboola-right-rail-thumbnails',
+                    placement: 'Right Rail Thumbnails',
+                    target_type: 'mix'
+                });
+            }
+
+            showTaboolaAd();
+            // setInterval('showTaboolaAd()', 180000);
+        
+        </script>
+	</div> -->
+	</div>
+    </div>
+
+	<!-- <a href="https://amongus-online.net/games" class="invisible">Top Games</a>
+	<a href="https://amongus-online.net" class="invisible">Among Us Online</a>
+	
+	<p class="invisible">Play online or over local WiFi with 4-15 players as you attempt to prep your spaceship for departure, but beware as one will be an impostor bent on killing everyone! Crewmates can win by completing all tasks or discovering and voting the impostor off the ship. The Impostor can use sabotage to cause chaos, making for easier kills and better alibis.</p>
+	<p class="invisible">Play online or over local WiFi with 4-15 players as you attempt to prep your spaceship for departure, but beware as one will be an impostor bent on killing everyone! Crewmates can win by completing all tasks or discovering and voting the impostor off the ship. The Impostor can use sabotage to cause chaos, making for easier kills and better alibis.</p>
+	<p class="invisible">Play online or over local WiFi with 4-15 players as you attempt to prep your spaceship for departure, but beware as one will be an impostor bent on killing everyone! Crewmates can win by completing all tasks or discovering and voting the impostor off the ship. The Impostor can use sabotage to cause chaos, making for easier kills and better alibis.</p>
+
+	<p class="invisible">Among Us Online online</p>
+	<p class="invisible">Among Us Online play online</p>
+	<p class="invisible">Among Us Online no download</p>
+	<p class="invisible">Among Us Online download</p>
+	<p class="invisible">Among Us Online on PC</p>
+	<p class="invisible">Among Us Online on Web</p>
+	<p class="invisible">Among Us Online on Web Browser</p>
+	<p class="invisible">Among Us Online on Mac</p>
+	<p class="invisible">Among Us Online unblocked</p>
+	<p class="invisible">Among Us Online free</p>
+	<p class="invisible">Among Us Online free bitcoin</p>
+	<p class="invisible">Among Us Online freebtc</p>
+	
+	<p class="invisible">Online Among Us Online</p>
+	<p class="invisible">Unblock Among Us Online</p>
+	<p class="invisible">Play Online Among Us Online</p>
+	
+	<h2 class="invisible">Best among us online. Among Us Online</h2>
+	<h2 class="invisible">No download required. Among Us Online</h2>
+	<h2 class="invisible">All pets, hats, skins are unlocked. Among Us Online</h2>
+	<h2 class="invisible">Play for Free. Among Us Online</h2>
+	<h2 class="invisible">Among us free. Among Us Online</h2>
+	<h2 class="invisible">Among us website. Among Us Online</h2>
+	<h2 class="invisible">Play among us. Among Us Online</h2>
+	<h2 class="invisible">Among us play online free. Among Us Online</h2>
+	<h2 class="invisible">Among us unblocked. Among Us Online</h2>
+	<h2 class="invisible">Among us play now. Among Us Online</h2>
+	<h2 class="invisible">Online among us. Among Us Online</h2>
+	<h2 class="invisible">Among us 2. Among Us Online</h2>
+
+		<script type='text/javascript' src="https://cdn.applixir.com/applixir.sdk3.0m.js"></script>
+	<div id="applixir_vanishing_div" hidden>
+	    <iframe id="applixir_parent" allowed="autoplay"></iframe>
+	</div>
+	
+	<section id="mainGames" class="section main-games">
+			
+		<style type="text/css">
+        .h3section {
+            margin-left: 5px;
+            margin-right: 5px;
+            padding-top: 3px;
+            padding-bottom: 1px;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 15px;
+            background-color: #2f458e;
+        }
+    </style>
+
+    <div class="container">
+        <h3 class="h3section">TOP GAMES</h3>
+        <div class="row">
+                                    <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/amongus" class="game-link">
+                    <img src="https://amongus-online.net/Resources/amongus.jpg" alt="Among Us" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Among Us</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/stack-ball-bitcoin" class="game-link">
+                    <img src="https://amongus-online.net/Resources/stack-ball.jpg" alt="Stack Ball" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Stack Ball</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/brain-out-bitcoin" class="game-link">
+                    <img src="https://amongus-online.net/Resources/brain-out.jpg" alt="Brain Out: Can you pass it?" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Brain Out: Can you pass it?</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/paper-fold-bitcoin" class="game-link">
+                    <img src="https://amongus-online.net/Resources/paper-fold.jpg" alt="Paper Fold" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Paper Fold</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/nonogram-bitcoin" class="game-link">
+                    <img src="https://amongus-online.net/Resources/nonogram.jpg" alt="Nonogram - Picture Cross" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Nonogram - Picture Cross</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/color-road-bitcoin" class="game-link">
+                    <img src="https://amongus-online.net/Resources/color-road.jpg" alt="Color Road" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Color Road</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/bitlife-bitcoin" class="game-link">
+                    <img src="https://amongus-online.net/Resources/bitlife.jpeg" alt="BitLife - Life Simulator" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">BitLife - Life Simulator</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/tomb-mask-bitcoin" class="game-link">
+                    <img src="https://amongus-online.net/Resources/tomb-mask.jpg" alt="Tomb of the Mask" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Tomb of the Mask</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/match3d-bitcoin" class="game-link">
+                    <img src="https://amongus-online.net/Resources/match3d.jpg" alt="Match 3D - Matching Puzzle" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Match 3D - Matching Puzzle</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/onnect-bitcoin" class="game-link">
+                    <img src="https://amongus-online.net/Resources/onnect.jpg" alt="Onnect - Tile Connect" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Onnect - Tile Connect</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/word-connect-bitcoin" class="game-link">
+                    <img src="https://amongus-online.net/Resources/word-connect.jpg" alt="Word Connect" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Word Connect</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/traffic-rider-bitcoin" class="game-link">
+                    <img src="https://amongus-online.net/Resources/traffic-rider.jpg" alt="Traffic Rider" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Traffic Rider</h3>
+                </a>
+            </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </div>
+
+        <h3 class="h3section">FUN GAMES</h3>
+        <div class="row">
+            <div class="col-md-6 col-lg-4">
+                <a href="https://subway-surfers.me/?utm_campaign=fungames" class="game-link" target="_blank">
+                    <img src="https://amongus-online.net/Resources/subway-surfers.jpg" alt="Subway Surfers" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Subway Surfers</h3>
+                </a>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <a href="https://stickman-hook.co/?utm_campaign=fungames" class="game-link" target="_blank">
+                    <img src="https://amongus-online.net/Resources/stickman-hook.jpg" alt="Stickman Hook" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Stickman Hook</h3>
+                </a>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <a href="https://moto-x3m.net/?utm_campaign=fungames" class="game-link" target="_blank">
+                    <img src="https://amongus-online.net/Resources/moto-x3m.jpeg" alt="Moto X3M" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Moto X3M</h3>
+                </a>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <a href="https://retro-bowl.net/?utm_campaign=fungames" class="game-link" target="_blank">
+                    <img src="https://amongus-online.net/Resources/retro-bowl.jpg" alt="Retro Bowl" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Retro Bowl</h3>
+                </a>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <a href="https://wordle-play.com/?utm_campaign=fungames" class="game-link" target="_blank">
+                    <img src="https://amongus-online.net/Resources/wordle.png" alt="Wordle" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Wordle - Guess Word</h3>
+                </a>
+            </div>
+
+                                                                                                                                                                                                                                                                                                                                    <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/flipping-bottle" class="game-link">
+                    <img src="https://img.gamedistribution.com/95c4932d8f6d42688b0fa38274282a86-512x384.jpeg" alt="Flipping Bottle" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Flipping Bottle</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/stack-ball" class="game-link">
+                    <img src="https://img.gamemonetize.com/8mrtwn70m9p5cb5e4omzbguhha02f0on/512x384.jpg" alt="Stack Ball" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Stack Ball</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/european-cup-champion" class="game-link">
+                    <img src="https://img.gamemonetize.com/wru6sji6rk6oxwwukehty9uvjeqcs3cp/512x384.jpg" alt="European Cup Champion" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">European Cup Champion</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/merge-plane-game" class="game-link">
+                    <img src="https://img.gamemonetize.com/39tiur8kmla28tiaiq8uymej1gm58cgc/512x384.jpg" alt="Merge Plane Idle Tycoon" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Merge Plane Idle Tycoon</h3>
+                </a>
+            </div>
+                                                                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/zombie-tsunami" class="game-link">
+                    <img src="https://img.gamemonetize.com/dwvcte397don0y485kcpytqjy9iw2qef/512x384.jpg" alt="Zombie Tsunami" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Zombie Tsunami</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/hill-climbing" class="game-link">
+                    <img src="https://img.gamemonetize.com/v33fk4a7b97riw532yhhg9gnawsqrhvn/512x384.jpg" alt="Hill Climbing" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Hill Climbing</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/swamp-attack" class="game-link">
+                    <img src="https://img.gamemonetize.com/ihnz6hc69rab7n2cfzl5x30udswdh2dz/512x384.jpg" alt="Swamp Attack" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Swamp Attack</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/sonik-run" class="game-link">
+                    <img src="https://img.gamemonetize.com/apq6vn2vd1iueahd9upn2uhe2gmihnjs/512x384.jpg" alt="Sonik Run" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Sonik Run</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/match-3d-matching-puzzle" class="game-link">
+                    <img src="https://img.gamemonetize.com/ccvmdyb0evwswcxpfr9nszui7n4y3a4g/512x384.jpg" alt="Match 3D - Matching Puzzle" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Match 3D - Matching Puzzle</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/uno-card-game" class="game-link">
+                    <img src="https://img.gamemonetize.com/nzyxeod3knb7uw2b6yry1l8su588dex0/512x384.jpg" alt="UNO Card Game" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">UNO Card Game</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/pixel-art-color-by-numbers" class="game-link">
+                    <img src="https://img.gamemonetize.com/zl80slokeaoye7ae05cjldi71m95eu1e/512x384.jpg" alt="Pixel Art - Color by Numbers" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Pixel Art - Color by Numbers</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/temple-run-2" class="game-link">
+                    <img src="https://img.gamemonetize.com/pkyyuilfrqkcdnmrxsg60j22ypk0peje/512x384.jpg" alt="Temple Run 2" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Temple Run 2</h3>
+                </a>
+            </div>
+                                                                        <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/red-ball-christmas-love" class="game-link">
+                    <img src="https://img.gamemonetize.com/626cqutdhz4dhp5dgyebv4vkw5wmanch/512x384.jpg" alt="Red Ball Christmas Love" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Red Ball Christmas Love</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/red-ball-forever-2" class="game-link">
+                    <img src="https://img.gamemonetize.com/xvgxy279mumukqpyzmvgwn8x1cw7g9cd/512x384.jpg" alt="Red Ball Forever 2" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Red Ball Forever 2</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/knife-hit" class="game-link">
+                    <img src="https://img.gamemonetize.com/xit46oczt98xmt9hp4lzy6mks9ozt5uq/512x384.jpg" alt="Knife Hit" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Knife Hit</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/home-scapes" class="game-link">
+                    <img src="https://img.gamemonetize.com/os4y1u1wp43901lecyhzddw4y2y4q04f/512x384.jpg" alt="Home Scapes" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Home Scapes</h3>
+                </a>
+            </div>
+                                                                        <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/paperio-2" class="game-link">
+                    <img src="https://img.gamemonetize.com/1skj7a1hu68a1p31ag4ywljq4gb18oma/512x384.jpg" alt="Paper.IO 2" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Paper.IO 2</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/momo-pop" class="game-link">
+                    <img src="https://img.gamemonetize.com/cqfw5c93fqef9pkp55e30darvb4i9l6m/512x384.jpg" alt="Momo Pop" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Momo Pop</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/super-hitmasters" class="game-link">
+                    <img src="https://img.gamemonetize.com/dbw075jc1l806ljs2z1tb69gl1rtb3up/512x384.jpg" alt="Super HitMasters" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Super HitMasters</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/ridge-racer" class="game-link">
+                    <img src="https://img.gamemonetize.com/mul3mcx5cpro5yxkmryp5lbdwxz7xo7k/512x384.jpg" alt="Ridge Racer" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Ridge Racer</h3>
+                </a>
+            </div>
+                                                                        <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/zombie-soldier" class="game-link">
+                    <img src="https://img.gamemonetize.com/2dhxk5g2vnyb7dc7kqbxktvb5bm01l03/512x384.jpg" alt="Zombie Soldier" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Zombie Soldier</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/super-wario-riders" class="game-link">
+                    <img src="https://img.gamemonetize.com/sly30piwilci61j7pc5x8n36cdu9n19f/512x384.jpg" alt="Super Wario Riders" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Super Wario Riders</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/jump-pet-adventure" class="game-link">
+                    <img src="https://img.gamemonetize.com/5hywj8g8k3mrx0btjkcp4ch2yulsfstk/512x384.jpg" alt="Jump Pet Adventure" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Jump Pet Adventure</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/hero-rescue-puzzle" class="game-link">
+                    <img src="https://img.gamemonetize.com/3596x93682lmj4cn7mrtldmfhviig7jj/512x384.jpg" alt="Hero Rescue Puzzle" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Hero Rescue Puzzle</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/hero-rescue" class="game-link">
+                    <img src="https://img.gamemonetize.com/zgkwaeh6phua8b460eg2j70sm5dixkjx/512x384.jpg" alt="Hero Rescue" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Hero Rescue</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/battle-of-aliens" class="game-link">
+                    <img src="https://img.gamemonetize.com/jzf36hxzdablg98oi158hihkjqd95b9p/512x384.jpg" alt="Battle of Aliens" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Battle of Aliens</h3>
+                </a>
+            </div>
+                                                                        <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/the-adventure-of-finn-bonnie" class="game-link">
+                    <img src="https://img.gamemonetize.com/a7e34jmeberc2e3gwkbhlvivhffkrwx2/512x384.jpg" alt="The Adventure of Finn &amp; Bonnie" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">The Adventure of Finn &amp; Bonnie</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/stickman-shooter-2" class="game-link">
+                    <img src="https://img.gamemonetize.com/fvr8yt6ygofxnoaexbatx1v66m4k2c8i/512x384.jpg" alt="Stickman Shooter 2" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Stickman Shooter 2</h3>
+                </a>
+            </div>
+                                                                        <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/jingle-jetpack" class="game-link">
+                    <img src="https://img.gamemonetize.com/1h0rpfwt512uknlm2so880g153siow4p/512x384.jpg" alt="Jingle Jetpack" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Jingle Jetpack</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/music-line" class="game-link">
+                    <img src="https://img.gamemonetize.com/vdkk80ahb95lnasx53bj2siy8u43vllq/512x384.jpg" alt="Music Line" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Music Line</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/super-neon-ball" class="game-link">
+                    <img src="https://img.gamemonetize.com/nsvw98y6e61iuekrmvqg35j77xwiguy4/512x384.jpg" alt="Super Neon Ball" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Super Neon Ball</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/hunter-assassin" class="game-link">
+                    <img src="https://amongus-online.net/Resources/hunter-assassin.jpg" alt="Hunter Assassin" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Hunter Assassin</h3>
+                </a>
+            </div>
+                                                                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/block-dancing-3d" class="game-link">
+                    <img src="https://img.gamemonetize.com/8h5t2mokvehtxkby2boi81vwx0yn4xwd/512x384.jpg" alt="Block Dancing 3D" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Block Dancing 3D</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/zumba-mania" class="game-link">
+                    <img src="https://img.gamemonetize.com/03yns70hfztn5480rjr3pfrg55z22e23/512x384.jpg" alt="Zumba Mania" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Zumba Mania</h3>
+                </a>
+            </div>
+                                                                                                                        <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/geometry-dash" class="game-link">
+                    <img src="https://img.gamemonetize.com/nvn7ldhyss1ml3qxm75v987s1l79gkc3/512x384.jpg" alt="Geometry Dash" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Geometry Dash</h3>
+                </a>
+            </div>
+                                                                                                                                                                                                                                                                                                                        <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/paper-fold" class="game-link">
+                    <img src="https://img.gamemonetize.com/yx6p8oamfphg604mxcq41utylym2cbw5/512x384.jpg" alt="Paper Fold" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Paper Fold</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/color-road" class="game-link">
+                    <img src="https://img.gamemonetize.com/0545z6qq7bqoyuc4lskjsqy8i4zlafop/512x384.jpg" alt="Color Road" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Color Road</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/bitlife" class="game-link">
+                    <img src="https://img.gamemonetize.com/sunlne8825d1006jux3b1xrl9vda49f1/512x384.jpg" alt="BitLife - Life Simulator" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">BitLife - Life Simulator</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/nonogram" class="game-link">
+                    <img src="https://img.gamemonetize.com/gp5m2n8bu5whguzriqhyqyfm4sygob6m/512x384.jpg" alt="Nonogram - Picture Cross" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Nonogram - Picture Cross</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/erase-one-part" class="game-link">
+                    <img src="https://img.gamemonetize.com/bn1uwodklkvshu6vldfpggwcjanqo1od/512x384.jpg" alt="Erase One Part" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Erase One Part</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/onet-connect-classic" class="game-link">
+                    <img src="https://img.gamedistribution.com/5709e110c64d401fbe4ca7dbaac6aa7f-512x384.jpeg" alt="Onet Connect Classic" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Onet Connect Classic</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/dream-chefs" class="game-link">
+                    <img src="https://img.gamedistribution.com/e21b9828e0a24266b4a943251800dd7a-512x384.jpeg" alt="Dream Chefs" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Dream Chefs</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/hungry-shark-arena" class="game-link">
+                    <img src="https://img.gamedistribution.com/1afba37790cf4c9696e6e6496f3a180d-512x384.jpeg" alt="Hungry Shark Arena" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Hungry Shark Arena</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/castle-defender-saga" class="game-link">
+                    <img src="https://img.gamedistribution.com/ab90fb200e70478e8e414c30e3f13d0b-512x384.jpeg" alt="Castle Defender Saga" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Castle Defender Saga</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/forest-match" class="game-link">
+                    <img src="https://img.gamedistribution.com/4d7af1d66ccd41fdacd3ba87933ced4b-512x384.jpeg" alt="Forest Match" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Forest Match</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/skydom" class="game-link">
+                    <img src="https://img.gamedistribution.com/ae10263247c44278b33c845ff1c2df80-512x384.jpeg" alt="Skydom" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Skydom</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/virtual-families-cook-off" class="game-link">
+                    <img src="https://img.gamedistribution.com/9bf2e82f7c684bdcb0a8f4fa3ec0ecd6-512x384.jpeg" alt="Virtual Families Cook Off" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Virtual Families Cook Off</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/family-barn" class="game-link">
+                    <img src="https://img.gamedistribution.com/0241e3a131354d5bbd6027696588d886-512x384.jpeg" alt="Family Barn" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Family Barn</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/pocket-tower" class="game-link">
+                    <img src="https://img.gamedistribution.com/b1c6c1121a4843e6a1a738868148cb69-512x384.jpeg" alt="Pocket Tower" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Pocket Tower</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/detective-loupe-puzzle" class="game-link">
+                    <img src="https://img.gamedistribution.com/5ab4e702d7eb409a8aee79f93a0669c8-512x384.jpeg" alt="Detective Loupe Puzzle" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Detective Loupe Puzzle</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/rally-point-4" class="game-link">
+                    <img src="https://img.gamedistribution.com/e4247763a4f9428699a327caf2b0d684-512x384.jpeg" alt="Rally Point 4" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Rally Point 4</h3>
+                </a>
+            </div>
+                                                                        <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/merge-cannon-chicken-defense" class="game-link">
+                    <img src="https://img.gamedistribution.com/bec78e2bc19243a6bb7e0939b9154e12-512x384.jpeg" alt="Merge Cannon: Chicken Defense" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Merge Cannon: Chicken Defense</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/doomsday-hero" class="game-link">
+                    <img src="https://img.gamedistribution.com/55fcce51d67c4942876c1e77fee1800b-512x384.jpeg" alt="Doomsday Hero" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Doomsday Hero</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/linquest" class="game-link">
+                    <img src="https://img.gamedistribution.com/41ae8d28b94c44758edff87088ab87de-512x384.jpeg" alt="LinQuest" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">LinQuest</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/slice-a-lot" class="game-link">
+                    <img src="https://img.gamedistribution.com/29064b4bd9224d0f9df67443de212758-512x384.jpeg" alt="Slice A Lot" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Slice A Lot</h3>
+                </a>
+            </div>
+                                                                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/shot-shot" class="game-link">
+                    <img src="https://img.gamedistribution.com/c2e862b3aded441daea92346bd5f8bbb-512x384.jpeg" alt="Shot Shot" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Shot Shot</h3>
+                </a>
+            </div>
+                                                <div class="col-md-6 col-lg-4">
+                <a href="https://amongus-online.net/game/agent-j" class="game-link">
+                    <img src="https://img.gamedistribution.com/f400eac22bb041e7aba7ad9fb537f772-512x384.jpeg" alt="Agent J" class="game-card__cover">
+                    <h3 class="game-card__title" style="font-size: 15px;">Agent J</h3>
+                </a>
+            </div>
+                                </div>
+    </div>		
+	</section> -->
+	
+	<script type="text/javascript">
+		$( document ).ready(function() {
+	        UpdateUI();
+	    });
+
+	    $( window ).resize(UpdateUI);
+
+	    function UpdateUI(){
+	    	var width = 960;
+	    	var height = 600;
+	        var top = height / 2 - 300 + 50;
+	        var left = $(window).width() / 2 - width / 2 - 160 - 20;
+	        var right = $(window).width() / 2 - width / 2 - 160 - 20;
+
+	        if (left > 0)
+	        {
+	          $("#cpm_left").show();
+	          $("#cpm_right").show();
+	          $("#cpm_left").css({top: top, left: left, position:'absolute'});
+	          $("#cpm_right").css({top: top, right: right, position:'absolute'});
+	        }
+	        else
+	        {
+	          $("#cpm_left").hide();
+	          $("#cpm_right").hide();
+	        }
+	    }
+	</script>
+	
+		
+	<!-- <script type="text/javascript">
+		var infolinks_pid = 3311209;
+		var infolinks_wsid = 0;
+	</script>
+	<script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js"></script> -->
+
+	<!-- <script type="text/javascript">
+	window._taboola = window._taboola || [];
+	_taboola.push({flush: true});
+	</script> -->
+    <style>
+      .main-content { margin: 0; overflow: hidden; }
+      .webgl-content { width: 100vw; height: 100vh; }
+    </style>
+  </body>
+</html>

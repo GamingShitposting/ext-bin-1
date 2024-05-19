@@ -1,0 +1,11 @@
+{
+"TOTAL_MEMORY": 188743680,
+"dataUrl": "CROSSNIQ_WebGL_v1.36.data.unityweb",
+"asmCodeUrl": "CROSSNIQ_WebGL_v1.36.asm.code.unityweb",
+"asmMemoryUrl": "CROSSNIQ_WebGL_v1.36.asm.memory.unityweb",
+"asmFrameworkUrl": "CROSSNIQ_WebGL_v1.36.asm.framework.unityweb",
+"graphicsAPI": ["WebGL 2.0", "WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20"
+}
