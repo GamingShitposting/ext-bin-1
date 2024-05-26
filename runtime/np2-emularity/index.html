@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<style>
+		.emularity-splash-screen { height: 100%; }
+		body { margin: 0; background: black; }
+		canvas {
+			max-width: 100vw;
+			max-height: 100vh;
+			width: calc(100vh * 4 / 3);
+			height: calc(100vw * 3 / 4);
+			display: block;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+	<canvas></canvas>
+	<script type="text/javascript" src="es6-promise.js"></script>
+	<script type="text/javascript" src="browserfs.min.js"></script>
+	<script type="text/javascript" src="loader.js"></script>
+	<script type="text/javascript">
+		(new Emulator(document.querySelector("canvas"), null,
+			new NP2Loader(NP2Loader.emulatorJS("np2-386.js"),
+				NP2Loader.emulatorWASM("np2-386.wasm"),
+				NP2Loader.nativeResolution(640, 400),
+				NP2Loader.mountZip("np2", NP2Loader.fetchFile("Game ROM",
+					(new URLSearchParams(location.hash.slice(1))).get('rom'))),
+		))).start({ waitAfterDownloading: true });
+	</script>
+</body>
+</html>
